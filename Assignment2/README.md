@@ -1,4 +1,4 @@
-Simple object validator and cleaner
+### Simple object validator and cleaner
 
 takes in a users array like for example:
 
@@ -126,7 +126,9 @@ and outputs an object that follows this syntax:
 }
 ```
 
-Notes:
+---
+
+#### Notes:
 
 - Used a Set for checking duplicate emails since it works like a hashtable under the hood for faster lookup times.
 - Assumed "Sort valid users by score from highest to lowest." means for both cleaned users and top users so i just sorted cleaned users in place and took the first three elements.

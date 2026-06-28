@@ -1,4 +1,4 @@
-Simple function which takes in an object and prints out a recipt string
+### Simple function which takes in an object and prints out a recipt string
 
 takes in an input object like so:
 
@@ -27,7 +27,9 @@ Total: 70.41
 Status: paid
 ```
 
-Notes:
+---
+
+#### Notes:
 
 - Added default values for all fields so the function runs even if some fields are missing.
 - Casting of all fields from string to numbers (because JS is an untyped mess :P).

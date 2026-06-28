@@ -42,9 +42,7 @@ function cleanUsers(users) {
   };
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const existingEmails = new Set();
-  for (const index in users) {
-    const user = users[index];
-
+  for (const user of users) {
     // Validation and mutation
     try {
       const requiredFields = ["id", "name", "age", "score", "roles", "email"];
