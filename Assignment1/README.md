@@ -2,7 +2,7 @@ Simple function which takes in an object and prints out a recipt string
 
 takes in an input object like so:
 
-```js
+```JS
 const order = {
   customerName: "Ahmad Ali",
   quantity: "3",
@@ -28,5 +28,6 @@ Status: paid
 ```
 
 Notes:
--added default values for all fields so the function runs even if some fields are missing
--casting of all fields from string to numbers (because JS is an untyped mess :P)
+
+- Added default values for all fields so the function runs even if some fields are missing.
+- Casting of all fields from string to numbers (because JS is an untyped mess :P).
