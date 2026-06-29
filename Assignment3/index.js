@@ -14,7 +14,8 @@ const events2 = [
   { type: "purchase", userId: 3, duration: 90 },
 ];
 
-function filterByType(events, type) {
+function filterByType(type, ...eventLists) {
+  const events = mergeEventLists(eventLists);
   const output = [];
   for (const event of events) {
     if (event.type === type) {
@@ -24,7 +25,8 @@ function filterByType(events, type) {
   return output;
 }
 
-function getUniqueUserIDs(events) {
+function getUniqueUserIDs(...eventLists) {
+  const events = mergeEventLists(eventLists);
   const output = new Set();
   for (const event of events) {
     if (!output.has(event.userId)) {
@@ -34,7 +36,8 @@ function getUniqueUserIDs(events) {
   return [...output];
 }
 
-function getAverageDuration(events) {
+function getAverageDuration(...eventLists) {
+  const events = mergeEventLists(eventLists);
   let output = 0,
     count = 0;
   for (const event of events) {
@@ -44,25 +47,14 @@ function getAverageDuration(events) {
   return output / count;
 }
 
-function groupEventsByType(events) {
+function groupEventsByType(...eventLists) {
+  const events = mergeEventLists(eventLists);
   const output = {};
   for (const event of events) {
     if (!output[event.type]) {
       output[event.type] = [];
     }
     output[event.type].push(event);
-  }
-  return output;
-}
-
-function singleEvenListExecutor(func, events) {
-  return func(events);
-}
-
-function multiEventListExecutor(func, ...eventLists) {
-  const output = [];
-  for (const events of eventLists) {
-    output.push(func(events));
   }
   return output;
 }

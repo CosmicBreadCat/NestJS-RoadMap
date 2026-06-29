@@ -27,7 +27,7 @@ Examples of the function:
 #### filterByType
 
 ```js
-filterByType(events1, "login");
+filterByType("login", events1);
 ```
 
 ```json
@@ -80,30 +80,6 @@ groupEventsByType(events1);
   "logout": [{ "type": "logout", "userId": 1, "duration": 20 }],
   "purchase": [{ "type": "purchase", "userId": 2, "duration": 300 }]
 }
-```
-
----
-
-#### singleEvenListExecutor
-
-```js
-singleEvenListExecutor(getAverageDuration, events1);
-```
-
-```json
-124
-```
-
----
-
-#### multiEventListExecutor
-
-```js
-multiEventListExecutor(getAverageDuration, events1, events2);
-```
-
-```json
-[124, 109]
 ```
 
 ---
