@@ -15,7 +15,14 @@ const events2 = [
 ];
 
 function filterByType(type, ...eventLists) {
-  const events = mergeEventLists(eventLists);
+  let events;
+
+  if (eventLists.length > 1) {
+    events = mergeEventLists(...eventLists);
+  } else {
+    events = eventLists[0];
+  }
+
   const output = [];
   for (const event of events) {
     if (event.type === type) {
@@ -26,7 +33,12 @@ function filterByType(type, ...eventLists) {
 }
 
 function getUniqueUserIDs(...eventLists) {
-  const events = mergeEventLists(eventLists);
+  let events;
+  if (eventLists.length > 1) {
+    events = mergeEventLists(...eventLists);
+  } else {
+    events = eventLists[0];
+  }
   const output = new Set();
   for (const event of events) {
     if (!output.has(event.userId)) {
@@ -37,7 +49,12 @@ function getUniqueUserIDs(...eventLists) {
 }
 
 function getAverageDuration(...eventLists) {
-  const events = mergeEventLists(eventLists);
+  let events;
+  if (eventLists.length > 1) {
+    events = mergeEventLists(...eventLists);
+  } else {
+    events = eventLists[0];
+  }
   let output = 0,
     count = 0;
   for (const event of events) {
@@ -48,7 +65,12 @@ function getAverageDuration(...eventLists) {
 }
 
 function groupEventsByType(...eventLists) {
-  const events = mergeEventLists(eventLists);
+  let events;
+  if (eventLists.length > 1) {
+    events = mergeEventLists(...eventLists);
+  } else {
+    events = eventLists[0];
+  }
   const output = {};
   for (const event of events) {
     if (!output[event.type]) {
@@ -66,3 +88,17 @@ function mergeEventLists(...eventLists) {
   }
   return output;
 }
+
+function generalAnalysisByType(type, ...eventLists) {
+  const filteredEvents = filterByType(type, ...eventLists);
+  return {
+    events: filteredEvents,
+    uniqueUserIDs: getUniqueUserIDs(filteredEvents),
+    averageDuration: getAverageDuration(filteredEvents),
+    grouped: groupEventsByType(...eventLists),
+  };
+}
+
+console.log(
+  JSON.stringify(generalAnalysisByType("login", events1, events2), null, 2),
+);

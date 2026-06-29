@@ -107,6 +107,106 @@ mergeEventLists(events1, events2);
 
 ---
 
+#### generalAnalysisByType
+
+```js
+generalAnalysisByType("login", events1, events2);
+```
+
+```json
+{
+  "events": [
+    {
+      "type": "login",
+      "userId": 1,
+      "duration": 120
+    },
+    {
+      "type": "login",
+      "userId": 2,
+      "duration": 80
+    },
+    {
+      "type": "login",
+      "userId": 1,
+      "duration": 100
+    },
+    {
+      "type": "login",
+      "userId": 3,
+      "duration": 45
+    },
+    {
+      "type": "login",
+      "userId": 2,
+      "duration": 150
+    }
+  ],
+  "uniqueUserIDs": [1, 2, 3],
+  "averageDuration": 99,
+  "grouped": {
+    "login": [
+      {
+        "type": "login",
+        "userId": 1,
+        "duration": 120
+      },
+      {
+        "type": "login",
+        "userId": 2,
+        "duration": 80
+      },
+      {
+        "type": "login",
+        "userId": 1,
+        "duration": 100
+      },
+      {
+        "type": "login",
+        "userId": 3,
+        "duration": 45
+      },
+      {
+        "type": "login",
+        "userId": 2,
+        "duration": 150
+      }
+    ],
+    "logout": [
+      {
+        "type": "logout",
+        "userId": 1,
+        "duration": 20
+      },
+      {
+        "type": "logout",
+        "userId": 2,
+        "duration": 200
+      }
+    ],
+    "purchase": [
+      {
+        "type": "purchase",
+        "userId": 2,
+        "duration": 300
+      },
+      {
+        "type": "purchase",
+        "userId": 1,
+        "duration": 60
+      },
+      {
+        "type": "purchase",
+        "userId": 3,
+        "duration": 90
+      }
+    ]
+  }
+}
+```
+
+---
+
 #### Notes:
 
 - Assumed each one of the requirements was a seperate function.
