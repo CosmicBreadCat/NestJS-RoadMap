@@ -1,3 +1,7 @@
+function round(num, places = 2) {
+  return Math.round(num * 10 ** places) / 10 ** places;
+}
+
 function studentGradeFilter(students) {
   const summary = { passing: [], failing: [], average: 0 };
 
@@ -14,7 +18,7 @@ function studentGradeFilter(students) {
     [[], [], 0],
   );
 
-  summary.average /= students.length;
+  summary.average /= round(students.length);
   return summary;
 }
 
